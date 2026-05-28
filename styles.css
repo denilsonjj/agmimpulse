@@ -99,9 +99,9 @@ input {
 .site-header {
   align-items: center;
   backdrop-filter: blur(22px);
-  background: rgba(46, 49, 50, 0.96);
-  border-bottom: 1px solid rgba(200, 230, 255, 0.12);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.14);
+  background: rgba(255, 255, 255, 0.88);
+  border-bottom: 1px solid rgba(191, 199, 208, 0.54);
+  box-shadow: 0 8px 30px rgba(15, 32, 43, 0.08);
   display: flex;
   gap: 24px;
   height: 78px;
@@ -111,18 +111,19 @@ input {
   position: fixed;
   right: 0;
   top: 0;
-  transition: height 180ms ease, background 180ms ease;
+  transition: height 260ms cubic-bezier(0.2, 0.8, 0.2, 1), background 260ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
   z-index: 50;
 }
 
 .site-header.compact {
   height: 66px;
-  background: rgba(46, 49, 50, 0.98);
+  background: rgba(248, 249, 250, 0.94);
+  box-shadow: 0 12px 34px rgba(15, 32, 43, 0.1);
 }
 
 .brand {
   align-items: center;
-  color: var(--white);
+  color: var(--text);
   display: inline-flex;
   font-family: var(--font-heading);
   font-size: 1.25rem;
@@ -132,7 +133,7 @@ input {
 }
 
 .brand-icon {
-  color: #88ceff;
+  color: var(--primary);
   font-size: 2rem;
   font-variation-settings: "FILL" 1;
 }
@@ -143,17 +144,28 @@ input {
   gap: 28px;
 }
 
-.desktop-nav a,
+.desktop-nav a {
+  color: rgba(25, 28, 29, 0.72);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 220ms ease;
+}
+
+.desktop-nav a:hover {
+  color: var(--primary);
+}
+
 .footer-links a {
   color: rgba(240, 241, 242, 0.78);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: color 180ms ease;
+  transition: color 220ms ease;
 }
 
-.desktop-nav a:hover,
 .footer-links a:hover {
   color: #88ceff;
 }
@@ -173,20 +185,31 @@ input {
   min-height: 48px;
   padding: 0 22px;
   text-transform: uppercase;
-  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+  transition: transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 260ms cubic-bezier(0.2, 0.8, 0.2, 1), background 260ms ease, border-color 260ms ease, color 260ms ease;
 }
 
-.header-cta,
 .button-primary {
   background: linear-gradient(135deg, var(--primary), #217cab);
   color: var(--white);
   box-shadow: 0 14px 34px rgba(0, 98, 140, 0.24);
 }
 
-.header-cta:hover,
 .button-primary:hover {
-  box-shadow: 0 20px 46px rgba(0, 98, 140, 0.34);
-  transform: translateY(-2px);
+  box-shadow: 0 18px 38px rgba(0, 98, 140, 0.28);
+  transform: translateY(-1px);
+}
+
+.header-cta {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(0, 98, 140, 0.22);
+  color: var(--primary-strong);
+  box-shadow: none;
+}
+
+.header-cta:hover {
+  background: rgba(0, 98, 140, 0.08);
+  border-color: rgba(0, 98, 140, 0.34);
+  transform: translateY(-1px);
 }
 
 .button-secondary,
@@ -200,7 +223,7 @@ input {
 .button-ghost:hover {
   border-color: var(--copper);
   color: var(--copper);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .button:disabled {
@@ -217,14 +240,14 @@ input {
 
 .button-whatsapp:hover {
   background: #128c7e;
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .menu-button {
   align-items: center;
   background: transparent;
   border: 0;
-  color: var(--white);
+  color: var(--text);
   cursor: pointer;
   display: none;
   justify-content: center;
@@ -309,7 +332,7 @@ input {
 }
 
 .eyebrow span {
-  animation: pulse 1.8s ease-in-out infinite;
+  animation: pulse 2.8s ease-in-out infinite;
   background: var(--copper);
   border-radius: 999px;
   height: 8px;
@@ -386,7 +409,7 @@ h3 {
 .hero-visual img {
   height: 100%;
   object-fit: cover;
-  transition: transform 900ms ease;
+  transition: transform 1200ms cubic-bezier(0.2, 0.8, 0.2, 1);
   width: 100%;
 }
 
@@ -486,7 +509,7 @@ h3 {
 }
 
 .ticker-track {
-  animation: marquee 24s linear infinite;
+  animation: marquee 34s linear infinite;
   display: flex;
   gap: 42px;
   padding: 26px 0;
@@ -576,7 +599,7 @@ section {
   border-radius: inherit;
   display: block;
   height: 100%;
-  transition: width 260ms ease;
+  transition: width 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
   width: 14%;
 }
 
@@ -585,7 +608,7 @@ section {
 }
 
 .quiz-panel.active {
-  animation: panelIn 260ms ease both;
+  animation: panelIn 360ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
   display: block;
 }
 
@@ -620,7 +643,7 @@ input[type="email"] {
   min-height: 52px;
   outline: 0;
   padding: 0 14px;
-  transition: border-color 160ms ease, box-shadow 160ms ease;
+  transition: border-color 220ms ease, box-shadow 220ms ease;
   width: 100%;
 }
 
@@ -675,7 +698,7 @@ input:focus {
   min-height: 74px;
   padding: 14px;
   text-align: left;
-  transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+  transition: border-color 220ms ease, background 220ms ease, box-shadow 220ms ease, transform 220ms ease;
   width: 100%;
 }
 
@@ -695,6 +718,10 @@ input:focus {
   background: rgba(0, 98, 140, 0.08);
   border-color: var(--primary);
   box-shadow: 0 12px 32px rgba(0, 98, 140, 0.1);
+}
+
+.option-button:hover {
+  transform: translateY(-1px);
 }
 
 .quiz-actions,
@@ -887,13 +914,14 @@ input:focus {
 
 .solution-card,
 .training-card {
-  transition: transform 180ms ease, border-color 180ms ease;
+  transition: transform 280ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 280ms ease, box-shadow 280ms ease;
 }
 
 .solution-card:hover,
 .training-card:hover {
   border-color: rgba(141, 77, 47, 0.36);
-  transform: translateY(-4px);
+  box-shadow: 0 18px 46px rgba(15, 32, 43, 0.11);
+  transform: translateY(-2px);
 }
 
 .solution-card.featured {
@@ -1004,8 +1032,8 @@ input:focus {
 
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 520ms ease, transform 520ms ease;
+  transform: translateY(12px);
+  transition: opacity 720ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 720ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .reveal.visible {
@@ -1037,11 +1065,22 @@ input:focus {
 @keyframes panelIn {
   from {
     opacity: 0;
-    transform: translateX(16px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
   }
 }
 
