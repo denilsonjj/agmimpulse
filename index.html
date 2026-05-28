@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impulse Me Clínicas - Diagnóstico Estratégico</title>
+  <meta name="description" content="Diagnóstico gratuito para clínicas descobrirem se a gestão está baseada em dados, processos e previsibilidade ou no achismo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@200..700,0..1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <div class="ambient ambient-primary"></div>
+    <div class="ambient ambient-copper"></div>
+    <div class="line-pattern" aria-hidden="true"></div>
+
+    <header class="site-header" id="siteHeader">
+      <a class="brand" href="#top" aria-label="Impulse Me Clínicas">
+        <span class="material-symbols-outlined brand-icon" aria-hidden="true">monitoring</span>
+        <span>Impulse Me</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <a href="#diagnostico">Diagnóstico</a>
+        <a href="#processo">Processo</a>
+        <a href="#sobre">Quem somos</a>
+        <a href="#servicos">Serviços</a>
+      </nav>
+
+      <a class="header-cta" href="#diagnostico">Começar teste</a>
+
+      <button class="menu-button" id="menuButton" type="button" aria-label="Abrir menu" aria-expanded="false">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <a href="#diagnostico">Diagnóstico</a>
+      <a href="#processo">Processo</a>
+      <a href="#sobre">Quem somos</a>
+      <a href="#servicos">Serviços</a>
+      <a class="mobile-menu-cta" href="#diagnostico">Começar teste</a>
+    </div>
+
+    <main id="top">
+      <section class="hero-section">
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <div class="eyebrow">
+              <span></span>
+              Diagnóstico Impulse Me Clínicas
+            </div>
+            <h1>Você gerencia sua clínica com dados completos ou vive no achismo?</h1>
+            <p class="hero-lead">7 perguntas revelam se você tem uma empresa de saúde ou um consultório caro que depende da sua sorte. Diagnóstico grátis em 2 minutos.</p>
+            <p class="hero-support">Entenda onde sua operação perde previsibilidade, pacientes e margem antes de investir mais em crescimento.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#diagnostico">Fazer diagnóstico gratuito</a>
+              <a class="button button-secondary" href="#processo">Ver metodologia</a>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal" aria-label="Painel visual de indicadores da clínica">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80" alt="Profissional de saúde analisando dados em uma clínica moderna">
+            <div class="visual-overlay"></div>
+            <div class="dashboard-card">
+              <div>
+                <span class="metric-label">Agenda previsível</span>
+                <strong>12 meses</strong>
+              </div>
+              <span class="material-symbols-outlined" aria-hidden="true">trending_up</span>
+            </div>
+            <div class="mini-chart" aria-hidden="true">
+              <span style="height: 34%"></span>
+              <span style="height: 58%"></span>
+              <span style="height: 42%"></span>
+              <span style="height: 76%"></span>
+              <span style="height: 88%"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ticker" aria-label="Diferenciais">
+          <div class="ticker-track">
+            <span>Processos claros</span>
+            <span>Indicadores de verdade</span>
+            <span>Agenda previsível</span>
+            <span>Equipe menos dependente</span>
+            <span>Margem acompanhada</span>
+            <span>Decisões com dados</span>
+            <span>Processos claros</span>
+            <span>Indicadores de verdade</span>
+            <span>Agenda previsível</span>
+            <span>Equipe menos dependente</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="diagnostic-section" id="diagnostico">
+        <div class="container">
+          <div class="section-heading centered reveal">
+            <span class="section-kicker">Teste interativo</span>
+            <h2>Descubra em qual zona de gestão sua clínica está hoje</h2>
+            <p>Preencha seus dados e responda uma pergunta por tela. O resultado aparece no final, sem expor score ou tags internas.</p>
+          </div>
+
+          <div class="quiz-shell reveal" id="quizShell">
+            <div class="quiz-progress" id="quizProgressWrap" hidden>
+              <div>
+                <span id="progressLabel">Pergunta 1 de 7</span>
+                <strong id="progressPercent">14%</strong>
+              </div>
+              <div class="progress-track">
+                <span id="progressBar"></span>
+              </div>
+            </div>
+
+            <form class="lead-form quiz-panel active" id="leadForm" novalidate>
+              <span class="panel-kicker">Antes da Q1</span>
+              <h3>Para começar seu diagnóstico</h3>
+              <p>Depois do cadastro, você responde as perguntas e recebe uma leitura estratégica ao final.</p>
+
+              <div class="form-grid">
+                <label>
+                  Nome completo
+                  <input type="text" name="name" autocomplete="name" required placeholder="Seu nome">
+                </label>
+                <label>
+                  WhatsApp com DDD
+                  <input type="tel" name="whatsapp" autocomplete="tel" required placeholder="(11) 99999-9999">
+                </label>
+                <label>
+                  Email profissional
+                  <input type="email" name="email" autocomplete="email" required placeholder="nome@clinica.com.br">
+                </label>
+                <label>
+                  Nome da clínica
+                  <input type="text" name="clinic" required placeholder="Clínica Exemplo">
+                </label>
+              </div>
+
+              <label class="consent-row">
+                <input type="checkbox" name="consent" required>
+                <span>Aceito receber contato da Impulse Me no WhatsApp.</span>
+              </label>
+
+              <p class="form-error" id="formError" role="alert"></p>
+
+              <button class="button button-primary form-button" type="submit">
+                Iniciar diagnóstico
+                <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+              </button>
+            </form>
+
+            <div class="quiz-panel question-panel" id="questionPanel" aria-live="polite">
+              <span class="panel-kicker" id="questionKicker">Q1</span>
+              <h3 id="questionTitle"></h3>
+              <div class="options-list" id="optionsList"></div>
+              <p class="form-error" id="questionError" role="alert"></p>
+              <div class="quiz-actions">
+                <button class="button button-ghost" id="backButton" type="button">
+                  <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+                  Voltar
+                </button>
+                <button class="button button-primary" id="nextButton" type="button" disabled>
+                  Próxima
+                  <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="quiz-panel result-panel" id="resultPanel" aria-live="polite">
+              <span class="panel-kicker">Resultado do diagnóstico</span>
+              <h3 id="resultTitle"></h3>
+              <p id="resultText"></p>
+              <div class="solution-box">
+                <span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>
+                <div>
+                  <strong>Solução indicada</strong>
+                  <p id="resultSolution"></p>
+                </div>
+              </div>
+              <div class="result-actions">
+                <a class="button button-whatsapp" id="whatsappButton" href="#" target="_blank" rel="noopener">Falar com a Impulse Me</a>
+                <button class="button button-secondary" id="restartButton" type="button">Refazer diagnóstico</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="process-section" id="processo">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="section-kicker">Metodologia</span>
+            <h2>Como o diagnóstico vira plano de ação</h2>
+          </div>
+
+          <div class="process-grid">
+            <article class="process-card wide reveal">
+              <span>01</span>
+              <h3>Mapeamento da operação</h3>
+              <p>Entendemos como decisões, agenda, financeiro, CRC e precificação funcionam hoje.</p>
+            </article>
+            <article class="process-card reveal">
+              <span>02</span>
+              <h3>Leitura dos gargalos</h3>
+              <p>O resultado aponta o nível de dependência, previsibilidade e maturidade de dados.</p>
+            </article>
+            <article class="process-card reveal">
+              <span>03</span>
+              <h3>Prioridade estratégica</h3>
+              <p>A recomendação final indica o caminho mais coerente para destravar crescimento.</p>
+            </article>
+            <article class="process-card wide reveal">
+              <span>04</span>
+              <h3>Próximo passo comercial</h3>
+              <p>O diagnóstico prepara a conversa comercial com clareza sobre o momento da clínica e o próximo passo mais coerente.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section" id="sobre">
+        <div class="container about-grid">
+          <div class="about-copy reveal">
+            <span class="section-kicker">Quem somos</span>
+            <h2>Sobre a AGM Impulse</h2>
+            <p class="about-lead">Idealizada por Ana Gleice Matos, criadora do Método Impulse ME.</p>
+            <p>Eu construí minha carreira dentro da operação, vivendo cada etapa. Comecei na linha de frente comercial na área da saúde, passei por recepção, vendas, liderança e gestão geral. Foram 15 anos sentindo na pele cada gargalo que um negócio enfrenta para crescer.</p>
+            <p>Transformei essa vivência no Método Impulse ME: a metodologia que impulsiona empresários a sair do caos e construir negócios com gestão assertiva, visão estratégica, processos, indicadores e faturamento.</p>
+            <p>Temos uma versão especializada para clínicas da área da saúde com o Método Impulse ME Clinic e atendemos todos os nichos de mercado com o Método Impulse ME 360.</p>
+            <div class="about-actions">
+              <a class="button button-primary" href="#diagnostico">Quero meu diagnóstico Impulse</a>
+            </div>
+          </div>
+
+          <div class="about-card reveal">
+            <span class="material-symbols-outlined" aria-hidden="true">psychology_alt</span>
+            <h3>Método Impulse ME</h3>
+            <p>Transforme dado em decisão estratégica. Saia do modo reativo e entre no modo gestor.</p>
+            <ul>
+              <li>Visão estratégica</li>
+              <li>Processos claros</li>
+              <li>Indicadores que viram ação</li>
+              <li>Faturamento com previsibilidade</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="solutions-section" id="servicos">
+        <div class="container">
+          <div class="section-heading split reveal">
+            <div>
+              <span class="section-kicker">Nossos serviços</span>
+              <h2>Método Impulse ME: transforme dado em decisão estratégica</h2>
+            </div>
+            <p>Consultorias, treinamentos e serviços estratégicos para empresas e clínicas que precisam sair do improviso e crescer com processo.</p>
+          </div>
+
+          <div class="services-block reveal">
+            <div class="services-label">Consultorias premium</div>
+            <div class="premium-grid">
+              <article class="solution-card featured">
+                <span class="material-symbols-outlined" aria-hidden="true">local_hospital</span>
+                <h3>Impulse ME Clinic</h3>
+                <p>Do caos ao controle financeiro na sua clínica. Processos, indicadores e agenda organizada.</p>
+                <a href="#diagnostico">Conhecer Clinic</a>
+              </article>
+              <article class="solution-card featured">
+                <span class="material-symbols-outlined" aria-hidden="true">query_stats</span>
+                <h3>Impulse ME 360</h3>
+                <p>Diagnóstico, processos e KPIs para empresas com previsibilidade, cultura organizacional e lucro.</p>
+                <a href="#diagnostico">Conhecer 360</a>
+              </article>
+            </div>
+          </div>
+
+          <div class="services-block reveal">
+            <div class="services-label">Treinamentos</div>
+            <div class="training-grid">
+              <article class="training-card">
+                <h3>Gestores de Empresas</h3>
+                <p>Delegue sem medo. Formamos líderes com rotina Impulse ME 360.</p>
+              </article>
+              <article class="training-card">
+                <h3>Gestor Comercial</h3>
+                <p>Transforme dashboard em meta. Líderes preparados para ler dados e agir com estratégia.</p>
+              </article>
+              <article class="training-card">
+                <h3>Gestores na Área da Saúde</h3>
+                <p>Clínica cheia com lucro baixo? Capacitamos liderança com Impulse ME Clinic.</p>
+              </article>
+              <article class="training-card">
+                <h3>Recepção com Método Disney</h3>
+                <p>Atendimento que encanta e fideliza com experiência de alto padrão.</p>
+              </article>
+              <article class="training-card">
+                <h3>Orçamentistas e Avaliadores</h3>
+                <p>Perde venda no orçamento? Treinamos seu time para fechar com valor.</p>
+              </article>
+              <article class="training-card">
+                <h3>CRC | Captação</h3>
+                <p>Agenda vazia? Estruturamos captação para lotar com previsibilidade.</p>
+              </article>
+              <article class="training-card">
+                <h3>CRC Closer | Conversão</h3>
+                <p>Lead não fecha? Treinamos seu CRC para converter com processo.</p>
+              </article>
+              <article class="training-card">
+                <h3>Mentorias</h3>
+                <p>Acompanhamento para implantar o Método Impulse ME na rotina de gestão.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="services-block reveal">
+            <div class="services-label">Serviços estratégicos</div>
+            <div class="solutions-grid">
+            <article class="solution-card reveal">
+              <span class="material-symbols-outlined" aria-hidden="true">calendar_month</span>
+              <h3>Plano de Estratégia Sazonal</h3>
+              <p>Calendário comercial de 12 meses com ações prontas para seu time aplicar e vender o ano todo.</p>
+              <a href="#diagnostico">Quero meu Plano</a>
+            </article>
+            <article class="solution-card reveal">
+              <span class="material-symbols-outlined" aria-hidden="true">price_check</span>
+              <h3>Precificação Aplicada</h3>
+              <p>Aprenda a precificar com estratégia. Pare de chutar preço e venda com margem e lucro real.</p>
+              <a href="#diagnostico">Quero Precificar Certo</a>
+            </article>
+            </div>
+          </div>
+
+          <div class="service-cta reveal">
+            <h3>Vive apagando incêndio ou analisa indicador e age com estratégia?</h3>
+            <p>O diagnóstico mostra onde dói e por onde começar.</p>
+            <a class="button button-primary" href="#diagnostico">Quero meu diagnóstico Impulse</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <a class="brand footer-brand" href="#top">
+          <span class="material-symbols-outlined brand-icon" aria-hidden="true">monitoring</span>
+          <span>Impulse Me</span>
+        </a>
+        <p>Diagnóstico interativo para clínicas que querem crescer com dados, processo e previsibilidade.</p>
+        <div class="footer-links">
+          <a href="#diagnostico">Diagnóstico</a>
+          <a href="#processo">Processo</a>
+          <a href="#sobre">Quem somos</a>
+          <a href="#servicos">Serviços</a>
+        </div>
+      </div>
+      <div class="container contact-grid">
+        <span>São José dos Campos / SP</span>
+        <a href="mailto:contato@agmimpulse.com.br">contato@agmimpulse.com.br</a>
+        <a href="https://www.instagram.com/agmattosconsultoria?igsh=MWY2a28yanR5d3RucA%3D%3D&utm_source=qr" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/share/18kHPQtDHW/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://br.linkedin.com/in/agmconsultoria-treinamento-32b397274" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://wa.me/message/ZBA4WKZ5RORVP1" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
