@@ -1344,3 +1344,338 @@ input:focus {
     gap: 28px;
   }
 }
+
+/* AGM brand refresh from client deck */
+:root {
+  --primary: #1e6f94;
+  --primary-strong: #0b4056;
+  --primary-soft: #b9ddee;
+  --copper: #c4643e;
+  --copper-strong: #9d4729;
+  --copper-soft: #f1d5c8;
+  --surface-dark: #0b3142;
+}
+
+p {
+  text-align: justify;
+}
+
+.brand {
+  gap: 12px;
+}
+
+.brand-logo {
+  background: #ffffff;
+  border: 1px solid rgba(11, 64, 86, 0.08);
+  border-radius: 8px;
+  display: block;
+  height: 54px;
+  object-fit: contain;
+  object-position: center;
+  padding: 3px;
+  width: 170px;
+}
+
+.brand span {
+  display: none;
+}
+
+.footer-brand .brand-logo {
+  height: 70px;
+  width: 210px;
+}
+
+.button-primary,
+.header-cta {
+  background: linear-gradient(135deg, var(--primary-strong), var(--primary));
+  border: 1px solid var(--primary-strong);
+  color: #f0a47f;
+  box-shadow: 0 14px 34px rgba(11, 64, 86, 0.24);
+}
+
+.button-primary:hover,
+.header-cta:hover {
+  background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+  border-color: var(--copper);
+  color: #f0a47f;
+  box-shadow: 0 18px 38px rgba(11, 64, 86, 0.3);
+}
+
+.diagnostic-strip {
+  align-items: center;
+  background: linear-gradient(90deg, var(--primary-strong), var(--primary));
+  border-bottom: 1px solid rgba(196, 100, 62, 0.35);
+  color: #ffffff;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  left: 0;
+  min-height: 44px;
+  padding: 8px 20px;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 78px;
+  transition: top 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 45;
+}
+
+.diagnostic-strip span {
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.diagnostic-strip a {
+  color: #f0a47f;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.site-header.compact + .diagnostic-strip {
+  top: 66px;
+}
+
+.first-section {
+  padding-top: 170px;
+}
+
+.hero-section {
+  min-height: auto;
+  padding-top: 110px;
+}
+
+.about-section h1 {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+}
+
+.section-title-line {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.section-title-line img {
+  background: #ffffff;
+  border: 1px solid rgba(11, 64, 86, 0.12);
+  border-radius: 8px;
+  height: 50px;
+  object-fit: contain;
+  padding: 4px;
+  width: 50px;
+}
+
+.eyebrow {
+  color: var(--copper-strong);
+}
+
+.hero-visual {
+  background: #ffffff;
+}
+
+.hero-visual img {
+  height: 100%;
+  object-fit: contain;
+  padding: clamp(34px, 7vw, 74px);
+  width: 100%;
+}
+
+.hero-visual:hover img {
+  transform: scale(1.02);
+}
+
+.visual-overlay {
+  background: linear-gradient(45deg, rgba(11, 64, 86, 0.05), rgba(255, 255, 255, 0) 52%, rgba(196, 100, 62, 0.09));
+}
+
+.dashboard-card,
+.mini-chart,
+.quiz-shell,
+.process-card,
+.solution-card,
+.training-card,
+.about-card,
+.testimonial-card {
+  border-color: rgba(11, 64, 86, 0.14);
+}
+
+.process-grid.two-columns {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.quiz-progress {
+  margin-bottom: 0;
+  margin-top: 28px;
+  position: static;
+}
+
+.result-panel {
+  border-radius: 8px;
+  margin: -8px;
+  padding: 8px;
+}
+
+.result-panel.zone-red {
+  background: #ba1a1a;
+  color: #ffffff;
+}
+
+.result-panel.zone-yellow {
+  background: #f2c94c;
+  color: #191c1d;
+}
+
+.result-panel.zone-blue {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.result-panel.zone-red > p,
+.result-panel.zone-blue > p,
+.result-panel.zone-red .solution-box p,
+.result-panel.zone-blue .solution-box p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.result-panel.zone-yellow > p,
+.result-panel.zone-yellow .solution-box p {
+  color: rgba(25, 28, 29, 0.78);
+}
+
+.result-panel.zone-red .panel-kicker,
+.result-panel.zone-blue .panel-kicker {
+  color: #ffffff;
+}
+
+.result-panel.zone-yellow .panel-kicker {
+  color: var(--primary-strong);
+}
+
+.result-panel.zone-red .solution-box,
+.result-panel.zone-blue .solution-box {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.result-panel.zone-yellow .solution-box {
+  background: rgba(255, 255, 255, 0.45);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.result-panel .button {
+  border: 1px solid #ffffff;
+}
+
+.whatsapp-mark {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 1rem;
+  height: 24px;
+  justify-content: center;
+  width: 24px;
+}
+
+.testimonials-section {
+  background: var(--surface-low);
+}
+
+.testimonials-grid {
+  align-items: center;
+  display: grid;
+  gap: 34px;
+  grid-template-columns: 1fr 0.85fr;
+}
+
+.testimonial-card {
+  background: var(--surface-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(11, 64, 86, 0.14);
+  border-radius: 8px;
+  box-shadow: 0 12px 42px rgba(15, 32, 43, 0.08);
+  padding: 34px;
+}
+
+.testimonial-card > .material-symbols-outlined {
+  align-items: center;
+  background: rgba(196, 100, 62, 0.12);
+  border: 1px solid rgba(196, 100, 62, 0.22);
+  border-radius: 8px;
+  color: var(--copper);
+  display: flex;
+  font-size: 2rem;
+  height: 58px;
+  justify-content: center;
+  margin-bottom: 22px;
+  width: 58px;
+}
+
+.testimonial-card h3 {
+  margin-bottom: 12px;
+}
+
+.testimonial-card .button {
+  margin-top: 24px;
+}
+
+@media (max-width: 1120px) {
+  .testimonials-grid,
+  .process-grid.two-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .diagnostic-strip {
+    top: 68px;
+  }
+
+  .site-header.compact + .diagnostic-strip {
+    top: 68px;
+  }
+
+  .first-section {
+    padding-top: 150px;
+  }
+
+  .hero-section {
+    padding-top: 78px;
+  }
+
+  .brand-logo {
+    height: 46px;
+    width: 146px;
+  }
+
+  .testimonial-card {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 430px) {
+  .diagnostic-strip {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+    min-height: 58px;
+    text-align: left;
+    top: 64px;
+  }
+
+  .diagnostic-strip span {
+    font-size: 0.78rem;
+    text-align: left;
+  }
+
+  .site-header.compact + .diagnostic-strip {
+    top: 64px;
+  }
+
+  .first-section {
+    padding-top: 160px;
+  }
+}
