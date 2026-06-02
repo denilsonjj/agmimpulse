@@ -1,5 +1,7 @@
 const WHATSAPP_BASE_LINK = "https://wa.me/message/ZBA4WKZ5RORVP1";
 const WHATSAPP_NUMBER = "5500000000000";
+const FORM_SUBMIT_EMAIL = "contato@agmimpulse.com.br";
+const FORM_SUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${FORM_SUBMIT_EMAIL}`;
 
 const questions = [
   {
@@ -135,6 +137,7 @@ const resultText = document.querySelector("#resultText");
 const resultSolution = document.querySelector("#resultSolution");
 const whatsappButton = document.querySelector("#whatsappButton");
 const restartButton = document.querySelector("#restartButton");
+const emailStatus = document.querySelector("#emailStatus");
 const menuButton = document.querySelector("#menuButton");
 const mobileMenu = document.querySelector("#mobileMenu");
 const siteHeader = document.querySelector("#siteHeader");
@@ -211,6 +214,8 @@ restartButton.addEventListener("click", () => {
   quizProgressWrap.hidden = true;
   formError.textContent = "";
   questionError.textContent = "";
+  emailStatus.textContent = "";
+  emailStatus.className = "email-status";
   document.querySelector("#diagnostico").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
@@ -286,13 +291,15 @@ function showResult() {
   const zone = getZone(score, budget);
   const result = results[zone];
   const solution = segment === "SAUDE" ? result.healthSolution : result.generalSolution;
+  const leadPayload = buildLeadPayload(zone, result, solution, score);
 
   resultPanel.className = `quiz-panel result-panel active ${result.className}`;
   resultTitle.textContent = result.title;
   resultText.textContent = result.text;
   resultSolution.textContent = solution;
   whatsappButton.innerHTML = `<span class="whatsapp-mark" aria-hidden="true">☏</span>${result.cta}`;
-  whatsappButton.href = buildWhatsappUrl(zone, result, solution);
+  whatsappButton.href = buildWhatsappUrl(leadPayload);
+  sendLeadEmail(leadPayload);
 
   questionPanel.classList.remove("active");
   quizProgressWrap.hidden = true;
@@ -315,12 +322,13 @@ function getZone(score, budget) {
   return "AZUL";
 }
 
-function buildWhatsappUrl(zone, result, solution) {
+function buildLeadPayload(zone, result, solution, score) {
   const answerLines = questions.map((question, index) => {
     const answer = state.answers[question.id];
     return `${index + 1}. ${question.title} ${answer?.letter || "-"} - ${answer?.text || "-"}`;
   });
 
+  const answersText = answerLines.join("\n");
   const message = [
     "Olá, AGM Impulse.",
     "Concluí o Diagnóstico Interativo e quero receber o direcionamento pelo WhatsApp.",
@@ -337,14 +345,79 @@ function buildWhatsappUrl(zone, result, solution) {
     `Solução indicada: ${solution}`,
     "",
     "Respostas:",
-    ...answerLines
+    answersText
   ].join("\n");
 
+  return {
+    nome: state.lead.name,
+    whatsapp: state.lead.whatsapp,
+    email: state.lead.email,
+    empresa: state.lead.company,
+    ramo_de_atuacao: state.lead.business,
+    cidade: state.lead.city,
+    estado: state.lead.state,
+    resultado: result.title,
+    zona,
+    score_total: score,
+    solucao_indicada: solution,
+    respostas: answersText,
+    mensagem_whatsapp: message
+  };
+}
+
+function buildWhatsappUrl(payload) {
   if (WHATSAPP_NUMBER !== "5500000000000") {
-    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(payload.mensagem_whatsapp)}`;
   }
 
-  return `${WHATSAPP_BASE_LINK}?text=${encodeURIComponent(message)}`;
+  return `${WHATSAPP_BASE_LINK}?text=${encodeURIComponent(payload.mensagem_whatsapp)}`;
+}
+
+async function sendLeadEmail(payload) {
+  emailStatus.textContent = "Enviando uma cópia do diagnóstico para a AGM Impulse...";
+  emailStatus.className = "email-status is-loading";
+
+  const formSubmitPayload = {
+    _subject: `Novo diagnóstico AGM Impulse - ${payload.nome}`,
+    _template: "table",
+    _captcha: "false",
+    _replyto: payload.email,
+    nome: payload.nome,
+    whatsapp: payload.whatsapp,
+    email: payload.email,
+    empresa: payload.empresa,
+    ramo_de_atuacao: payload.ramo_de_atuacao,
+    cidade: payload.cidade,
+    estado: payload.estado,
+    resultado: payload.resultado,
+    zona: payload.zona,
+    score_total: payload.score_total,
+    solucao_indicada: payload.solucao_indicada,
+    respostas: payload.respostas
+  };
+
+  try {
+    const response = await fetch(FORM_SUBMIT_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(formSubmitPayload)
+    });
+    const data = await response.json().catch(() => ({}));
+
+    if (!response.ok || data.success === "false" || data.success === false) {
+      throw new Error(data.message || `FormSubmit retornou status ${response.status}`);
+    }
+
+    emailStatus.textContent = "Cópia enviada para o e-mail da AGM Impulse.";
+    emailStatus.className = "email-status is-success";
+  } catch (error) {
+    console.error("Falha ao enviar diagnóstico por e-mail:", error);
+    emailStatus.textContent = "Não foi possível enviar a cópia por e-mail agora. Use o botão do WhatsApp para encaminhar o diagnóstico.";
+    emailStatus.className = "email-status is-error";
+  }
 }
 
 const revealObserver = new IntersectionObserver((entries) => {

@@ -1580,6 +1580,34 @@ p {
   width: 24px;
 }
 
+.email-status {
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin: 18px 0 0;
+  min-height: 22px;
+  padding: 0;
+  text-align: left;
+}
+
+.email-status.is-loading,
+.email-status.is-success,
+.email-status.is-error {
+  padding: 12px 14px;
+}
+
+.email-status.is-loading {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.email-status.is-success {
+  background: rgba(37, 211, 102, 0.18);
+}
+
+.email-status.is-error {
+  background: rgba(255, 255, 255, 0.22);
+}
+
 .testimonials-section {
   background: var(--surface-low);
 }
