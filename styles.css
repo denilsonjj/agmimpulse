@@ -1381,8 +1381,12 @@ p {
 }
 
 .footer-brand .brand-logo {
-  height: 70px;
-  width: 210px;
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 8px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+  height: 82px;
+  padding: 8px 12px;
+  width: 236px;
 }
 
 .button-primary,
