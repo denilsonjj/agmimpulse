@@ -777,7 +777,7 @@ input:focus {
 
 .about-copy {
   display: grid;
-  gap: 18px;
+  gap: 20px;
 }
 
 .about-lead {
@@ -1459,22 +1459,23 @@ p {
 
 .about-section h1 {
   font-size: clamp(2.4rem, 5vw, 4rem);
+  max-width: 680px;
 }
 
 .section-title-line {
   align-items: center;
   display: flex;
-  gap: 12px;
+  gap: 14px;
+  margin-bottom: -6px;
 }
 
-.section-title-line img {
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  height: 66px;
-  object-fit: contain;
-  padding: 0;
-  width: 190px;
+.section-title-line::before {
+  background: var(--copper);
+  border-radius: 999px;
+  content: "";
+  display: inline-block;
+  height: 2px;
+  width: 42px;
 }
 
 .eyebrow {
