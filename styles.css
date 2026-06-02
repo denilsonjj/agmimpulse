@@ -104,7 +104,7 @@ input {
   box-shadow: 0 8px 30px rgba(15, 32, 43, 0.08);
   display: flex;
   gap: 24px;
-  height: 78px;
+  height: 88px;
   justify-content: space-between;
   left: 0;
   padding: 0 max(20px, calc((100vw - var(--container)) / 2));
@@ -116,7 +116,7 @@ input {
 }
 
 .site-header.compact {
-  height: 66px;
+  height: 76px;
   background: rgba(248, 249, 250, 0.94);
   box-shadow: 0 12px 34px rgba(15, 32, 43, 0.1);
 }
@@ -1369,11 +1369,16 @@ p {
   border: 0;
   border-radius: 0;
   display: block;
-  height: 54px;
+  height: 72px;
   object-fit: contain;
   object-position: center;
   padding: 0;
-  width: 170px;
+  width: 210px;
+}
+
+.site-header.compact .brand-logo {
+  height: 62px;
+  width: 186px;
 }
 
 .brand span {
@@ -1384,9 +1389,9 @@ p {
   background: rgba(255, 255, 255, 0.94);
   border-radius: 8px;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
-  height: 82px;
-  padding: 8px 12px;
-  width: 236px;
+  height: 118px;
+  padding: 10px 14px;
+  width: 258px;
 }
 
 .button-primary,
@@ -1419,7 +1424,7 @@ p {
   position: fixed;
   right: 0;
   text-align: center;
-  top: 78px;
+  top: 88px;
   transition: top 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
   z-index: 45;
 }
@@ -1440,11 +1445,11 @@ p {
 }
 
 .site-header.compact + .diagnostic-strip {
-  top: 66px;
+  top: 76px;
 }
 
 .first-section {
-  padding-top: 170px;
+  padding-top: 188px;
 }
 
 .hero-section {
@@ -1466,10 +1471,10 @@ p {
   background: transparent;
   border: 0;
   border-radius: 0;
-  height: 50px;
+  height: 66px;
   object-fit: contain;
   padding: 0;
-  width: 140px;
+  width: 190px;
 }
 
 .eyebrow {
@@ -1679,6 +1684,11 @@ p {
   }
 
   .brand-logo {
+    height: 46px;
+    width: 146px;
+  }
+
+  .site-header.compact .brand-logo {
     height: 46px;
     width: 146px;
   }
