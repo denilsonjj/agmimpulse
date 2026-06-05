@@ -72,7 +72,7 @@
       </a>
 
       <nav class="desktop-nav" aria-label="Navegação principal">
-        <a href="#sobre">Quem somos</a>
+        <a href="#sobre">Sobre</a>
         <a href="#processo">Processos</a>
         <a href="#servicos">Serviços</a>
         <a href="#depoimentos">Depoimentos</a>
@@ -85,13 +85,8 @@
       </button>
     </header>
 
-    <div class="diagnostic-strip" aria-label="Atalho para diagnóstico">
-      <span>Se falta clareza nos indicadores, não há direção na decisão.</span>
-      <a href="#diagnostico">Liberar Diagnóstico</a>
-    </div>
-
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-      <a href="#sobre">Quem somos</a>
+      <a href="#sobre">Sobre</a>
       <a href="#processo">Processos</a>
       <a href="#servicos">Serviços</a>
       <a href="#depoimentos">Depoimentos</a>
@@ -102,10 +97,10 @@
       <section class="about-section first-section" id="sobre">
         <div class="container about-grid">
           <div class="about-copy reveal">
-            <div class="section-title-line">
-              <span class="section-kicker">Quem somos</span>
+            <div class="about-heading">
+              <img src="assets/logo-agm-impulse.png" alt="AGM Impulse">
+              <h1>Sobre a AGM Impulse</h1>
             </div>
-            <h1>Sobre a AGM Impulse</h1>
             <p class="about-lead">A trajetória da empresa foi construída a partir de uma vivência prática dentro da operação.</p>
             <p>A idealizadora passou por todas as etapas de gestão enfrentando os desafios que um negócio encontra para crescer. Essa experiência consolidou-se no Método Impulse-ME, uma metodologia desenvolvida para tirar empresários do caos e estruturar negócios com gestão assertiva, visão estratégica, processos eficientes e indicadores claros, consolidando a saúde da empresa para crescer com previsibilidade.</p>
             <p>A empresa oferece soluções especializadas para diferentes segmentos: o Impulse-ME Clinic, voltado para clínicas da área da saúde, e o Impulse-ME 360, aplicável a todos os nichos de mercado. Ambos os métodos têm como objetivo transformar a gestão empresarial, eliminando gargalos e promovendo resultados consistentes e sustentáveis.</p>
@@ -115,8 +110,10 @@
           </div>
 
           <div class="about-card reveal">
-            <span class="material-symbols-outlined" aria-hidden="true">psychology_alt</span>
-            <h3>Método Impulse-ME</h3>
+            <div class="card-heading">
+              <span class="material-symbols-outlined" aria-hidden="true">psychology_alt</span>
+              <h3>Método Impulse-ME</h3>
+            </div>
             <p>Transforme dado em decisão estratégica. Saia do modo reativo e entre no modo gestor.</p>
             <ul>
               <li>Visão estratégica</li>
@@ -182,12 +179,18 @@
           <div class="process-grid two-columns">
             <article class="process-card reveal">
               <span>01</span>
-              <h3>Questionário Estratégico</h3>
+              <div class="card-heading">
+                <span class="material-symbols-outlined" aria-hidden="true">fact_check</span>
+                <h3>Questionário Estratégico</h3>
+              </div>
               <p>Por meio de perguntas objetivas, você compartilha os principais pontos de atrito da sua operação. A partir dessas informações, conduzimos uma análise estruturada que permite identificar padrões e possíveis causas raiz. Esse processo diferencia sintomas de problemas reais.</p>
             </article>
             <article class="process-card reveal">
               <span>02</span>
-              <h3>Direcionamento Estratégico para Resultados Sustentáveis</h3>
+              <div class="card-heading">
+                <span class="material-symbols-outlined" aria-hidden="true">route</span>
+                <h3>Direcionamento Estratégico para Resultados Sustentáveis</h3>
+              </div>
               <p>O resultado direciona as estratégias para os pontos críticos da operação. Com isso, as soluções propostas atendem diretamente às necessidades da organização, garantindo ações precisas, eliminando causas raiz e gerando resultados consistentes e sustentáveis.</p>
             </article>
           </div>
@@ -196,11 +199,9 @@
 
       <section class="solutions-section" id="servicos">
         <div class="container">
-          <div class="section-heading split reveal">
-            <div>
-              <span class="section-kicker">Serviços</span>
-              <h2>Estruturando rotinas e escalando resultados</h2>
-            </div>
+          <div class="section-heading services-heading reveal">
+            <span class="section-kicker">Serviços</span>
+            <h2>Estruturando rotinas e escalando resultados</h2>
             <p>Especialistas em processos organizacionais para empresas e clínicas. Implementamos metodologias e treinamentos práticos que transformam intenções em gestão de verdade.</p>
           </div>
 
@@ -208,14 +209,18 @@
             <div class="services-label">Consultorias premium</div>
             <div class="premium-grid">
               <article class="solution-card featured">
-                <span class="material-symbols-outlined" aria-hidden="true">local_hospital</span>
-                <h3>Impulse-ME Clinic</h3>
+                <div class="card-heading">
+                  <span class="material-symbols-outlined" aria-hidden="true">local_hospital</span>
+                  <h3>Impulse-ME Clinic</h3>
+                </div>
                 <p>Do caos ao controle financeiro na sua empresa de saúde. Processos, indicadores e agenda organizada.</p>
                 <a href="#diagnostico">Conhecer Clinic</a>
               </article>
               <article class="solution-card featured">
-                <span class="material-symbols-outlined" aria-hidden="true">query_stats</span>
-                <h3>Impulse-ME 360</h3>
+                <div class="card-heading">
+                  <span class="material-symbols-outlined" aria-hidden="true">query_stats</span>
+                  <h3>Impulse-ME 360</h3>
+                </div>
                 <p>Diagnóstico, processos e indicadores para empresas com previsibilidade, cultura organizacional e lucro.</p>
                 <a href="#diagnostico">Conhecer 360</a>
               </article>
@@ -226,35 +231,35 @@
             <div class="services-label">Treinamentos</div>
             <div class="training-grid">
               <article class="training-card">
-                <h3>Gestores de Empresas</h3>
+                <div class="card-heading"><span class="material-symbols-outlined" aria-hidden="true">groups</span><h3>Gestores de Empresas</h3></div>
                 <p>Delegue sem medo. Formamos líderes com rotina Impulse-ME 360.</p>
               </article>
               <article class="training-card">
-                <h3>Gestor Comercial</h3>
+                <div class="card-heading"><span class="material-symbols-outlined" aria-hidden="true">monitoring</span><h3>Gestor Comercial</h3></div>
                 <p>Transforme dashboard em meta. Líderes preparados para ler dados e agir com estratégia.</p>
               </article>
               <article class="training-card">
-                <h3>Gestores na Área da Saúde</h3>
+                <div class="card-heading"><span class="material-symbols-outlined" aria-hidden="true">health_metrics</span><h3>Gestores na Área da Saúde</h3></div>
                 <p>Empresa de saúde cheia com lucro baixo? Capacitamos liderança com Impulse-ME Clinic.</p>
               </article>
               <article class="training-card">
-                <h3>Recepção com Método Disney</h3>
+                <div class="card-heading"><span class="material-symbols-outlined" aria-hidden="true">sentiment_satisfied</span><h3>Recepção com Método Disney</h3></div>
                 <p>Atendimento que encanta e fideliza com experiência de alto padrão.</p>
               </article>
               <article class="training-card">
-                <h3>Orçamentistas e Avaliadores</h3>
+                <div class="card-heading"><span class="material-symbols-outlined" aria-hidden="true">request_quote</span><h3>Orçamentistas e Avaliadores</h3></div>
                 <p>Perde venda no orçamento? Treinamos seu time para fechar com valor.</p>
               </article>
               <article class="training-card">
-                <h3>CRC | Captação</h3>
+                <div class="card-heading"><span class="material-symbols-outlined" aria-hidden="true">campaign</span><h3>CRC | Captação</h3></div>
                 <p>Agenda vazia? Estruturamos captação para lotar com previsibilidade.</p>
               </article>
               <article class="training-card">
-                <h3>CRC Closer | Conversão</h3>
+                <div class="card-heading"><span class="material-symbols-outlined" aria-hidden="true">handshake</span><h3>CRC Closer | Conversão</h3></div>
                 <p>Lead não fecha? Treinamos seu CRC para converter com processo.</p>
               </article>
               <article class="training-card">
-                <h3>Mentorias</h3>
+                <div class="card-heading"><span class="material-symbols-outlined" aria-hidden="true">support_agent</span><h3>Mentorias</h3></div>
                 <p>Acompanhamento para implantar o Método Impulse-ME na rotina de gestão.</p>
               </article>
             </div>
@@ -264,14 +269,18 @@
             <div class="services-label">Serviços estratégicos</div>
             <div class="solutions-grid">
               <article class="solution-card reveal">
-                <span class="material-symbols-outlined" aria-hidden="true">calendar_month</span>
-                <h3>Plano de Estratégia Sazonal</h3>
+                <div class="card-heading">
+                  <span class="material-symbols-outlined" aria-hidden="true">calendar_month</span>
+                  <h3>Plano de Estratégia Sazonal</h3>
+                </div>
                 <p>Calendário comercial de 12 meses com ações prontas para seu time aplicar e vender o ano todo.</p>
                 <a href="#diagnostico">Quero meu Plano</a>
               </article>
               <article class="solution-card reveal">
-                <span class="material-symbols-outlined" aria-hidden="true">price_check</span>
-                <h3>Precificação Aplicada</h3>
+                <div class="card-heading">
+                  <span class="material-symbols-outlined" aria-hidden="true">price_check</span>
+                  <h3>Precificação Aplicada</h3>
+                </div>
                 <p>Aprenda a precificar com estratégia. Pare de chutar preço e venda com margem e lucro real.</p>
                 <a href="#diagnostico">Quero Precificar Certo</a>
               </article>
@@ -369,8 +378,14 @@
             </div>
 
             <div class="quiz-panel result-panel" id="resultPanel" aria-live="polite">
-              <span class="panel-kicker">Resultado do diagnóstico</span>
-              <h3 id="resultTitle"></h3>
+              <div class="result-heading">
+                <span class="material-symbols-outlined" id="resultIcon" aria-hidden="true">analytics</span>
+                <div>
+                  <span class="panel-kicker">Resultado do diagnóstico</span>
+                  <h3 id="resultTitle"></h3>
+                </div>
+              </div>
+              <div class="result-meta" id="resultMeta"></div>
               <p id="resultText"></p>
               <div class="solution-box">
                 <span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>
@@ -400,8 +415,10 @@
             <p>Acompanhe os depoimentos e bastidores da AGM Impulse nas redes sociais.</p>
           </div>
           <div class="testimonial-card reveal">
-            <span class="material-symbols-outlined" aria-hidden="true">reviews</span>
-            <h3>Veja os depoimentos no Instagram</h3>
+            <div class="card-heading">
+              <span class="material-symbols-outlined" aria-hidden="true">reviews</span>
+              <h3>Veja os depoimentos no Instagram</h3>
+            </div>
             <p>Reunimos relatos de clientes e experiências com treinamentos, consultorias e implantação do Método Impulse-ME.</p>
             <a class="button button-primary" href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDAwODY5NjU3MTY2MTY0?igsh=dHNzeHcwNnFyaG82" target="_blank" rel="noopener">Ver depoimentos</a>
           </div>
@@ -417,7 +434,7 @@
         </a>
         <p>Diagnóstico interativo para empresas que querem crescer com dados, processo e previsibilidade.</p>
         <div class="footer-links">
-          <a href="#sobre">Quem somos</a>
+          <a href="#sobre">Sobre</a>
           <a href="#processo">Processos</a>
           <a href="#servicos">Serviços</a>
           <a href="#depoimentos">Depoimentos</a>

@@ -81,6 +81,7 @@ const questions = [
 const results = {
   VERMELHA: {
     className: "zone-red",
+    icon: "warning",
     title: "ZONA VERMELHA: Empresa no Modo Sobrevivência",
     text: "A gestão ainda depende muito do improviso. Sem processos claros, indicadores confiáveis e rotina de análise, cada decisão vira urgência e o crescimento cobra caro da operação.",
     generalSolution: "IMPULSE-ME 360 - Diagnóstico, processos e indicadores para recuperar controle, previsibilidade e lucro.",
@@ -89,6 +90,7 @@ const results = {
   },
   AMARELA: {
     className: "zone-yellow",
+    icon: "insights",
     title: "ZONA AMARELA: Crescimento Instável",
     text: "Existe movimento, mas ainda falta previsibilidade. A empresa vende, entrega e resolve, porém sem uma rotina forte de indicadores o crescimento fica vulnerável.",
     generalSolution: "PLANO DE ESTRATÉGIA SAZONAL - Calendário comercial de 12 meses com ações prontas para vender o ano todo.",
@@ -97,6 +99,7 @@ const results = {
   },
   AZUL: {
     className: "zone-blue",
+    icon: "trending_up",
     title: "ZONA AZUL: Base Sólida, Hora de Escalar",
     text: "A operação já tem sinais de maturidade. Agora o desafio é transformar dados em decisão recorrente, treinar liderança e escalar sem perder margem.",
     generalSolution: "MENTORIAS IMPULSE-ME - Acompanhamento para implantar rotina de gestão, indicadores e tomada de decisão.",
@@ -105,6 +108,7 @@ const results = {
   },
   AZUL_PREMIUM: {
     className: "zone-blue",
+    icon: "workspace_premium",
     title: "ZONA AZUL PREMIUM: Pronto para Virar Referência",
     text: "A empresa demonstra estrutura e maturidade. O próximo passo é buscar excelência, blindar a operação e dominar o mercado com estratégia.",
     generalSolution: "IMPULSE-ME 360 PREMIUM - Projeto estratégico para consolidar gestão, cultura organizacional e crescimento sustentável.",
@@ -135,6 +139,8 @@ const questionError = document.querySelector("#questionError");
 const resultTitle = document.querySelector("#resultTitle");
 const resultText = document.querySelector("#resultText");
 const resultSolution = document.querySelector("#resultSolution");
+const resultIcon = document.querySelector("#resultIcon");
+const resultMeta = document.querySelector("#resultMeta");
 const whatsappButton = document.querySelector("#whatsappButton");
 const restartButton = document.querySelector("#restartButton");
 const emailStatus = document.querySelector("#emailStatus");
@@ -216,6 +222,7 @@ restartButton.addEventListener("click", () => {
   questionError.textContent = "";
   emailStatus.textContent = "";
   emailStatus.className = "email-status";
+  resultMeta.innerHTML = "";
   document.querySelector("#diagnostico").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
@@ -291,13 +298,21 @@ function showResult() {
   const zone = getZone(score, budget);
   const result = results[zone];
   const solution = segment === "SAUDE" ? result.healthSolution : result.generalSolution;
-  const leadPayload = buildLeadPayload(zone, result, solution, score);
+  const segmentLabel = segment === "SAUDE" ? "Saúde" : "Outros";
+  const directionLabel = getDirectionLabel(budget);
+  const leadPayload = buildLeadPayload(zone, result, solution, score, segmentLabel, directionLabel);
 
   resultPanel.className = `quiz-panel result-panel active ${result.className}`;
+  resultIcon.textContent = result.icon;
   resultTitle.textContent = result.title;
+  resultMeta.innerHTML = `
+    <span>Segmento: ${segmentLabel}</span>
+    <span>Pontuação: ${score}/18</span>
+    <span>Direcionamento: ${directionLabel}</span>
+  `;
   resultText.textContent = result.text;
   resultSolution.textContent = solution;
-  whatsappButton.innerHTML = `<span class="whatsapp-mark" aria-hidden="true">☏</span>${result.cta}`;
+  whatsappButton.innerHTML = `<span class="material-symbols-outlined" aria-hidden="true">chat</span>${result.cta}`;
   whatsappButton.href = buildWhatsappUrl(leadPayload);
   sendLeadEmail(leadPayload);
 
@@ -307,7 +322,7 @@ function showResult() {
 }
 
 function getZone(score, budget) {
-  if (score === 6 && budget === "PREMIUM") {
+  if (score <= 9 && budget === "PREMIUM") {
     return "AZUL_PREMIUM";
   }
 
@@ -322,7 +337,18 @@ function getZone(score, budget) {
   return "AZUL";
 }
 
-function buildLeadPayload(zone, result, solution, score) {
+function getDirectionLabel(budget) {
+  const labels = {
+    BAIXINHO: "Processos internos",
+    MEDIO: "Treinamento de equipe",
+    ALTO: "Mentoria estratégica",
+    PREMIUM: "Consultoria premium"
+  };
+
+  return labels[budget] || "Direcionamento estratégico";
+}
+
+function buildLeadPayload(zone, result, solution, score, segmentLabel, directionLabel) {
   const answerLines = questions.map((question, index) => {
     const answer = state.answers[question.id];
     return `${index + 1}. ${question.title} ${answer?.letter || "-"} - ${answer?.text || "-"}`;
@@ -338,10 +364,13 @@ function buildLeadPayload(zone, result, solution, score) {
     `Email: ${state.lead.email}`,
     `Empresa: ${state.lead.company}`,
     `Ramo de atuação: ${state.lead.business}`,
+    `Segmento selecionado: ${segmentLabel}`,
     `Cidade/Estado: ${state.lead.city}/${state.lead.state}`,
     "",
     `Resultado: ${result.title}`,
     `Zona: ${zone.replace("_", " ")}`,
+    `Pontuação: ${score}/18`,
+    `Direcionamento desejado: ${directionLabel}`,
     `Solução indicada: ${solution}`,
     "",
     "Respostas:",
@@ -354,11 +383,13 @@ function buildLeadPayload(zone, result, solution, score) {
     email: state.lead.email,
     empresa: state.lead.company,
     ramo_de_atuacao: state.lead.business,
+    segmento: segmentLabel,
     cidade: state.lead.city,
     estado: state.lead.state,
     resultado: result.title,
-    zona,
+    zona: zone,
     score_total: score,
+    direcionamento: directionLabel,
     solucao_indicada: solution,
     respostas: answersText,
     mensagem_whatsapp: message
@@ -381,17 +412,21 @@ async function sendLeadEmail(payload) {
     _subject: `Novo diagnóstico AGM Impulse - ${payload.nome}`,
     _template: "table",
     _captcha: "false",
+    _honey: "",
+    _url: window.location.href.split("#")[0],
     _replyto: payload.email,
     nome: payload.nome,
     whatsapp: payload.whatsapp,
     email: payload.email,
     empresa: payload.empresa,
     ramo_de_atuacao: payload.ramo_de_atuacao,
+    segmento: payload.segmento,
     cidade: payload.cidade,
     estado: payload.estado,
     resultado: payload.resultado,
     zona: payload.zona,
     score_total: payload.score_total,
+    direcionamento: payload.direcionamento,
     solucao_indicada: payload.solucao_indicada,
     respostas: payload.respostas
   };
@@ -405,9 +440,18 @@ async function sendLeadEmail(payload) {
       },
       body: JSON.stringify(formSubmitPayload)
     });
-    const data = await response.json().catch(() => ({}));
+    const responseText = await response.text();
+    let data = {};
 
-    if (!response.ok || data.success === "false" || data.success === false) {
+    try {
+      data = JSON.parse(responseText);
+    } catch {
+      data = {};
+    }
+
+    const wasAccepted = response.ok && (data.success === true || data.success === "true");
+
+    if (!wasAccepted) {
       throw new Error(data.message || `FormSubmit retornou status ${response.status}`);
     }
 
@@ -415,7 +459,10 @@ async function sendLeadEmail(payload) {
     emailStatus.className = "email-status is-success";
   } catch (error) {
     console.error("Falha ao enviar diagnóstico por e-mail:", error);
-    emailStatus.textContent = "Não foi possível enviar a cópia por e-mail agora. Use o botão do WhatsApp para encaminhar o diagnóstico.";
+    const needsActivation = /activation|activate form/i.test(error.message);
+    emailStatus.textContent = needsActivation
+      ? "O recebimento por e-mail ainda precisa ser ativado pela AGM Impulse. O resultado continua disponível no WhatsApp."
+      : "Não foi possível enviar a cópia por e-mail agora. Use o botão do WhatsApp para encaminhar o diagnóstico.";
     emailStatus.className = "email-status is-error";
   }
 }
