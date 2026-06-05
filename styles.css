@@ -1470,6 +1470,13 @@ p {
   text-align: justify;
 }
 
+.section-heading.centered p {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 680px;
+  text-align: center;
+}
+
 .brand {
   gap: 12px;
 }
