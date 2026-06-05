@@ -1893,7 +1893,7 @@ p {
   padding: 0 20px;
   position: fixed;
   right: 24px;
-  transition: background 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+  transition: background 220ms ease, box-shadow 220ms ease, opacity 180ms ease, transform 220ms ease;
   z-index: 48;
 }
 
@@ -1905,6 +1905,12 @@ p {
   background: #128c7e;
   box-shadow: 0 20px 44px rgba(18, 140, 126, 0.38);
   transform: translateY(-2px);
+}
+
+.floating-whatsapp.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(16px);
 }
 
 .testimonials-grid {
@@ -2051,16 +2057,17 @@ p {
   }
 
   .floating-whatsapp {
-    bottom: 18px;
-    height: 58px;
-    min-height: 58px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    box-shadow: 0 10px 26px rgba(18, 140, 126, 0.28);
+    height: 48px;
+    min-height: 48px;
     padding: 0;
-    right: 16px;
-    width: 58px;
+    right: 12px;
+    width: 48px;
   }
 
   .floating-whatsapp i {
-    font-size: 2rem;
+    font-size: 1.65rem;
   }
 
   .floating-whatsapp span {
@@ -2474,15 +2481,28 @@ p {
   }
 
   .contact-grid {
-    align-items: center;
+    align-items: stretch;
+    display: grid;
     gap: 13px;
+    justify-content: center;
     margin-top: 26px;
+    max-width: 340px;
     padding-top: 24px;
+    width: 100%;
   }
 
   .contact-grid span,
   .contact-grid a {
-    text-align: center;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 18px minmax(0, auto);
+    justify-content: start;
+    text-align: left;
+    width: 100%;
+  }
+
+  .contact-grid i {
+    min-width: 18px;
   }
 }
 
