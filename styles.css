@@ -1121,9 +1121,19 @@ input:focus {
 
 .contact-grid span,
 .contact-grid a {
+  align-items: center;
   color: rgba(240, 241, 242, 0.74);
+  display: inline-flex;
   font-size: 0.88rem;
   font-weight: 700;
+  gap: 8px;
+}
+
+.contact-grid i {
+  color: #88ceff;
+  font-size: 1rem;
+  min-width: 16px;
+  text-align: center;
 }
 
 .contact-grid a:hover {
@@ -1722,6 +1732,181 @@ p {
   background: var(--surface-low);
 }
 
+.testimonials-layout {
+  display: grid;
+  gap: 36px;
+}
+
+.testimonials-layout > .section-heading {
+  margin-bottom: 0;
+}
+
+.video-carousel {
+  margin: 0 auto;
+  max-width: 1120px;
+  min-width: 0;
+  width: 100%;
+}
+
+.video-carousel-viewport {
+  overflow: hidden;
+  padding: 18px 0 26px;
+  width: 100%;
+}
+
+.video-carousel-track {
+  display: flex;
+  gap: 18px;
+  transform: translateX(0);
+  transition: transform 680ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.video-testimonial {
+  background: #ffffff;
+  border: 1px solid rgba(11, 64, 86, 0.14);
+  border-radius: 8px;
+  box-shadow: 0 12px 36px rgba(15, 32, 43, 0.08);
+  flex: 0 0 calc((100% - 36px) / 3);
+  min-width: 0;
+  opacity: 0.62;
+  overflow: hidden;
+  transform: scale(0.94);
+  transition: opacity 420ms ease, transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 420ms ease;
+}
+
+.video-testimonial.is-active {
+  box-shadow: 0 22px 54px rgba(11, 64, 86, 0.18);
+  opacity: 1;
+  transform: scale(1);
+}
+
+.video-testimonial video {
+  aspect-ratio: 9 / 16;
+  background: var(--surface-dark);
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+
+.video-testimonial-caption {
+  display: grid;
+  gap: 5px;
+  min-height: 84px;
+  padding: 16px 18px 18px;
+}
+
+.video-testimonial-caption span {
+  color: var(--copper);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.video-testimonial-caption strong {
+  color: var(--text);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.video-carousel-controls {
+  align-items: center;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+}
+
+.carousel-arrow {
+  align-items: center;
+  background: var(--surface-dark);
+  border: 1px solid var(--surface-dark);
+  border-radius: 999px;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  height: 46px;
+  justify-content: center;
+  transition: background 220ms ease, border-color 220ms ease, transform 220ms ease;
+  width: 46px;
+}
+
+.carousel-arrow:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.carousel-dots {
+  align-items: center;
+  display: flex;
+  gap: 9px;
+}
+
+.carousel-dot {
+  background: var(--outline-variant);
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  height: 9px;
+  padding: 0;
+  transition: background 260ms ease, width 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  width: 9px;
+}
+
+.carousel-dot.is-active {
+  background: var(--copper);
+  width: 28px;
+}
+
+.testimonials-social {
+  align-items: center;
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+
+.testimonials-social p {
+  color: var(--muted);
+  margin: 0;
+  text-align: center;
+}
+
+.testimonials-social .button {
+  flex: 0 0 auto;
+}
+
+.floating-whatsapp {
+  align-items: center;
+  background: #25d366;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 999px;
+  bottom: 24px;
+  box-shadow: 0 16px 38px rgba(18, 140, 126, 0.3);
+  color: #ffffff;
+  display: inline-flex;
+  font-size: 0.9rem;
+  font-weight: 800;
+  gap: 10px;
+  min-height: 54px;
+  padding: 0 20px;
+  position: fixed;
+  right: 24px;
+  transition: background 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+  z-index: 48;
+}
+
+.floating-whatsapp i {
+  font-size: 1.7rem;
+}
+
+.floating-whatsapp:hover {
+  background: #128c7e;
+  box-shadow: 0 20px 44px rgba(18, 140, 126, 0.38);
+  transform: translateY(-2px);
+}
+
 .testimonials-grid {
   align-items: center;
   display: grid;
@@ -1768,6 +1953,10 @@ p {
   .process-grid.two-columns {
     grid-template-columns: 1fr;
   }
+
+  .video-testimonial {
+    flex-basis: calc((100% - 18px) / 2);
+  }
 }
 
 @media (max-width: 700px) {
@@ -1811,6 +2000,71 @@ p {
 
   .testimonial-card {
     padding: 22px;
+  }
+
+  .testimonials-layout {
+    gap: 26px;
+  }
+
+  .video-carousel {
+    width: 100%;
+  }
+
+  .video-carousel-viewport {
+    margin: 0 -4px;
+    padding: 10px 4px 22px;
+    width: calc(100% + 8px);
+  }
+
+  .video-carousel-track {
+    gap: 12px;
+  }
+
+  .video-testimonial {
+    flex-basis: 100%;
+    opacity: 1;
+    transform: none;
+  }
+
+  .video-testimonial-caption {
+    min-height: 78px;
+    padding: 14px 16px 16px;
+  }
+
+  .video-carousel-controls {
+    gap: 14px;
+  }
+
+  .carousel-arrow {
+    height: 44px;
+    width: 44px;
+  }
+
+  .testimonials-social {
+    display: grid;
+    gap: 14px;
+    justify-items: center;
+  }
+
+  .testimonials-social .button {
+    width: 100%;
+  }
+
+  .floating-whatsapp {
+    bottom: 18px;
+    height: 58px;
+    min-height: 58px;
+    padding: 0;
+    right: 16px;
+    width: 58px;
+  }
+
+  .floating-whatsapp i {
+    font-size: 2rem;
+  }
+
+  .floating-whatsapp span {
+    display: none;
   }
 }
 

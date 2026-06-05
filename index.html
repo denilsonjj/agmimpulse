@@ -23,6 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@200..700,0..1&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script type="application/ld+json">
     {
@@ -410,23 +411,81 @@
       </section>
 
       <section class="testimonials-section" id="depoimentos">
-        <div class="container testimonials-grid">
-          <div class="section-heading reveal">
+        <div class="container testimonials-layout">
+          <div class="section-heading centered reveal">
             <span class="section-kicker">Depoimentos</span>
             <h2>Resultados de quem já viveu o método</h2>
-            <p>Acompanhe os depoimentos e bastidores da AGM Impulse nas redes sociais.</p>
+            <p>Conheça experiências reais de clientes com as consultorias, treinamentos e o Método Impulse-ME.</p>
           </div>
-          <div class="testimonial-card reveal">
-            <div class="card-heading">
-              <span class="material-symbols-outlined" aria-hidden="true">reviews</span>
-              <h3>Veja os depoimentos no Instagram</h3>
+
+          <div class="video-carousel reveal" id="testimonialCarousel" aria-label="Carrossel de depoimentos em vídeo">
+            <div class="video-carousel-viewport">
+              <div class="video-carousel-track">
+                <article class="video-testimonial is-active">
+                  <video muted playsinline loop controls preload="metadata" aria-label="Depoimento em vídeo 1">
+                    <source src="assets/videos/depoimento-01.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-testimonial-caption">
+                    <span>Depoimento 01</span>
+                    <strong>Experiência com a AGM Impulse</strong>
+                  </div>
+                </article>
+                <article class="video-testimonial">
+                  <video muted playsinline loop controls preload="metadata" aria-label="Depoimento em vídeo 2">
+                    <source src="assets/videos/depoimento-02.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-testimonial-caption">
+                    <span>Depoimento 02</span>
+                    <strong>Gestão que gera clareza</strong>
+                  </div>
+                </article>
+                <article class="video-testimonial">
+                  <video muted playsinline loop controls preload="metadata" aria-label="Depoimento em vídeo 3">
+                    <source src="assets/videos/depoimento-03.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-testimonial-caption">
+                    <span>Depoimento 03</span>
+                    <strong>Resultados com método</strong>
+                  </div>
+                </article>
+                <article class="video-testimonial">
+                  <video muted playsinline loop controls preload="metadata" aria-label="Depoimento em vídeo 4">
+                    <source src="assets/videos/depoimento-04.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-testimonial-caption">
+                    <span>Depoimento 04</span>
+                    <strong>Transformação na operação</strong>
+                  </div>
+                </article>
+              </div>
             </div>
-            <p>Reunimos relatos de clientes e experiências com treinamentos, consultorias e implantação do Método Impulse-ME.</p>
-            <a class="button button-primary" href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDAwODY5NjU3MTY2MTY0?igsh=dHNzeHcwNnFyaG82" target="_blank" rel="noopener">Ver depoimentos</a>
+
+            <div class="video-carousel-controls">
+              <button class="carousel-arrow" id="testimonialPrev" type="button" aria-label="Depoimento anterior">
+                <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+              </button>
+              <div class="carousel-dots" id="testimonialDots" aria-label="Selecionar depoimento"></div>
+              <button class="carousel-arrow" id="testimonialNext" type="button" aria-label="Próximo depoimento">
+                <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="testimonials-social reveal">
+            <p>Veja mais relatos e bastidores da AGM Impulse no Instagram.</p>
+            <a class="button button-primary" href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDAwODY5NjU3MTY2MTY0?igsh=dHNzeHcwNnFyaG82" target="_blank" rel="noopener">
+              Ver mais depoimentos
+              <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
+            </a>
           </div>
         </div>
       </section>
     </main>
+
+    <a class="floating-whatsapp" href="https://wa.me/message/ZBA4WKZ5RORVP1" target="_blank" rel="noopener" aria-label="Falar com a AGM Impulse pelo WhatsApp">
+      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+      <span>Fale conosco</span>
+    </a>
 
     <footer class="site-footer">
       <div class="container footer-grid">
@@ -443,12 +502,12 @@
         </div>
       </div>
       <div class="container contact-grid">
-        <span>São José dos Campos / SP</span>
-        <a href="mailto:contato@agmimpulse.com.br">contato@agmimpulse.com.br</a>
-        <a href="https://www.instagram.com/agmattosconsultoria?igsh=MWY2a28yanR5d3RucA%3D%3D&utm_source=qr" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.facebook.com/share/18kHPQtDHW/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://br.linkedin.com/in/agmconsultoria-treinamento-32b397274" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://wa.me/message/ZBA4WKZ5RORVP1" target="_blank" rel="noopener">WhatsApp</a>
+        <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>São José dos Campos / SP</span>
+        <a href="mailto:contato@agmimpulse.com.br"><i class="fa-solid fa-envelope" aria-hidden="true"></i>contato@agmimpulse.com.br</a>
+        <a href="https://www.instagram.com/agmattosconsultoria?igsh=MWY2a28yanR5d3RucA%3D%3D&utm_source=qr" target="_blank" rel="noopener"><i class="fa-brands fa-instagram" aria-hidden="true"></i>Instagram</a>
+        <a href="https://www.facebook.com/share/18kHPQtDHW/?mibextid=wwXIfr" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i>Facebook</a>
+        <a href="https://br.linkedin.com/in/agmconsultoria-treinamento-32b397274" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>LinkedIn</a>
+        <a href="https://wa.me/message/ZBA4WKZ5RORVP1" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>WhatsApp</a>
       </div>
     </footer>
   </div>

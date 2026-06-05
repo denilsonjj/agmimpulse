@@ -147,6 +147,7 @@ const emailStatus = document.querySelector("#emailStatus");
 const menuButton = document.querySelector("#menuButton");
 const mobileMenu = document.querySelector("#mobileMenu");
 const siteHeader = document.querySelector("#siteHeader");
+const testimonialCarousel = document.querySelector("#testimonialCarousel");
 
 leadForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -247,6 +248,169 @@ mobileMenu.querySelectorAll("a").forEach((link) => {
 window.addEventListener("scroll", () => {
   siteHeader.classList.toggle("compact", window.scrollY > 40);
 });
+
+function initTestimonialCarousel() {
+  if (!testimonialCarousel) {
+    return;
+  }
+
+  const track = testimonialCarousel.querySelector(".video-carousel-track");
+  const slides = [...testimonialCarousel.querySelectorAll(".video-testimonial")];
+  const videos = slides.map((slide) => slide.querySelector("video"));
+  const previousButton = document.querySelector("#testimonialPrev");
+  const nextButton = document.querySelector("#testimonialNext");
+  const dotsContainer = document.querySelector("#testimonialDots");
+  let activeIndex = 0;
+  let autoplayTimer;
+  let touchStartX = 0;
+  let carouselVisible = false;
+
+  const dots = slides.map((_, index) => {
+    const dot = document.createElement("button");
+    dot.className = "carousel-dot";
+    dot.type = "button";
+    dot.setAttribute("aria-label", `Mostrar depoimento ${index + 1}`);
+    dot.addEventListener("click", () => {
+      setActiveSlide(index);
+      restartAutoplay();
+    });
+    dotsContainer.appendChild(dot);
+    return dot;
+  });
+
+  function visibleSlides() {
+    if (window.innerWidth <= 700) {
+      return 1;
+    }
+
+    if (window.innerWidth <= 1120) {
+      return 2;
+    }
+
+    return 3;
+  }
+
+  function trackStartIndex() {
+    const visible = visibleSlides();
+    const preferredStart = visible === 3 ? activeIndex - 1 : activeIndex;
+    return Math.max(0, Math.min(preferredStart, slides.length - visible));
+  }
+
+  function updateTrackPosition() {
+    const firstVisibleSlide = slides[trackStartIndex()];
+    const trackOffset = firstVisibleSlide.offsetLeft - slides[0].offsetLeft;
+    track.style.transform = `translateX(-${trackOffset}px)`;
+  }
+
+  function updateVideoPlayback() {
+    videos.forEach((video, index) => {
+      if (index === activeIndex && carouselVisible) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }
+
+  function setActiveSlide(index) {
+    activeIndex = (index + slides.length) % slides.length;
+
+    slides.forEach((slide, slideIndex) => {
+      const isActive = slideIndex === activeIndex;
+      slide.classList.toggle("is-active", isActive);
+      slide.setAttribute("aria-hidden", String(!isActive && visibleSlides() === 1));
+    });
+
+    dots.forEach((dot, dotIndex) => {
+      const isActive = dotIndex === activeIndex;
+      dot.classList.toggle("is-active", isActive);
+      dot.setAttribute("aria-current", isActive ? "true" : "false");
+    });
+
+    updateTrackPosition();
+    updateVideoPlayback();
+  }
+
+  function stopAutoplay() {
+    window.clearInterval(autoplayTimer);
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    autoplayTimer = window.setInterval(() => {
+      setActiveSlide(activeIndex + 1);
+    }, 7000);
+  }
+
+  function restartAutoplay() {
+    startAutoplay();
+  }
+
+  previousButton.addEventListener("click", () => {
+    setActiveSlide(activeIndex - 1);
+    restartAutoplay();
+  });
+
+  nextButton.addEventListener("click", () => {
+    setActiveSlide(activeIndex + 1);
+    restartAutoplay();
+  });
+
+  testimonialCarousel.addEventListener("mouseenter", stopAutoplay);
+  testimonialCarousel.addEventListener("mouseleave", startAutoplay);
+  testimonialCarousel.addEventListener("touchstart", (event) => {
+    touchStartX = event.touches[0].clientX;
+    stopAutoplay();
+  }, { passive: true });
+  testimonialCarousel.addEventListener("touchend", (event) => {
+    const movement = event.changedTouches[0].clientX - touchStartX;
+
+    if (Math.abs(movement) > 45) {
+      setActiveSlide(activeIndex + (movement < 0 ? 1 : -1));
+    }
+
+    startAutoplay();
+  }, { passive: true });
+
+  videos.forEach((video) => {
+    video.muted = true;
+    video.addEventListener("volumechange", () => {
+      if (!video.muted) {
+        stopAutoplay();
+      }
+    });
+  });
+
+  const carouselObserver = new IntersectionObserver((entries) => {
+    carouselVisible = entries[0].isIntersecting;
+    updateVideoPlayback();
+
+    if (carouselVisible) {
+      startAutoplay();
+    } else {
+      stopAutoplay();
+    }
+  }, { threshold: 0.35 });
+
+  carouselObserver.observe(testimonialCarousel);
+
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(() => {
+      setActiveSlide(activeIndex);
+    }, 120);
+  });
+
+  setActiveSlide(0);
+}
+
+initTestimonialCarousel();
 
 function renderQuestion() {
   const question = questions[state.currentQuestion];
