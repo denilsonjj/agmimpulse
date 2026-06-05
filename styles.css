@@ -1070,6 +1070,13 @@ input:focus {
   font-size: clamp(1.5rem, 3vw, 2.35rem);
 }
 
+.service-cta .button {
+  font-size: 0.94rem;
+  font-weight: 900;
+  justify-self: center;
+  width: 50%;
+}
+
 .service-cta p {
   color: rgba(240, 241, 242, 0.76);
 }
