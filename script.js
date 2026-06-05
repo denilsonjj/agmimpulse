@@ -148,8 +148,6 @@ const menuButton = document.querySelector("#menuButton");
 const mobileMenu = document.querySelector("#mobileMenu");
 const siteHeader = document.querySelector("#siteHeader");
 const testimonialCarousel = document.querySelector("#testimonialCarousel");
-const floatingWhatsApp = document.querySelector(".floating-whatsapp");
-const siteFooter = document.querySelector(".site-footer");
 
 leadForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -413,18 +411,6 @@ function initTestimonialCarousel() {
 }
 
 initTestimonialCarousel();
-
-if (floatingWhatsApp && siteFooter) {
-  const updateFloatingWhatsApp = () => {
-    const footerPosition = siteFooter.getBoundingClientRect();
-    const footerIsVisible = footerPosition.top < window.innerHeight && footerPosition.bottom > 0;
-    floatingWhatsApp.classList.toggle("is-hidden", footerIsVisible);
-  };
-
-  window.addEventListener("scroll", updateFloatingWhatsApp, { passive: true });
-  window.addEventListener("resize", updateFloatingWhatsApp);
-  updateFloatingWhatsApp();
-}
 
 function renderQuestion() {
   const question = questions[state.currentQuestion];
