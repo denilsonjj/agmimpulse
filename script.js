@@ -1,5 +1,4 @@
-const WHATSAPP_BASE_LINK = "https://wa.me/message/ZBA4WKZ5RORVP1";
-const WHATSAPP_NUMBER = "5500000000000";
+const WHATSAPP_NUMBER = "5512996103835";
 const FORM_SUBMIT_EMAIL = "contato@agmimpulse.com.br";
 const FORM_SUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${FORM_SUBMIT_EMAIL}`;
 
@@ -561,11 +560,7 @@ function buildLeadPayload(zone, result, solution, score, segmentLabel, direction
 }
 
 function buildWhatsappUrl(payload) {
-  if (WHATSAPP_NUMBER !== "5500000000000") {
-    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(payload.mensagem_whatsapp)}`;
-  }
-
-  return `${WHATSAPP_BASE_LINK}?text=${encodeURIComponent(payload.mensagem_whatsapp)}`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(payload.mensagem_whatsapp)}`;
 }
 
 async function sendLeadEmail(payload) {
